@@ -1,0 +1,107 @@
+官方:
+http://appium.io/slate/cn/v1.2.0/
+
+1. 直接下载 dmg 文件。地址在 https://bitbucket.org/appium/appium.app/downloads/。有可能会被墙， vpn 自备。
+或者https://github.com/appium/appium/releases
+2. 用 nodejs 的 npm 安装。强烈推荐。
+3. 从源代码执行。
+
+1.源码安装appium
+下载源码：
+git clone https://github.com/appium/appium
+ 2.使用brew安装node（一定要用brew）
+3.安装 npm install -g 源码文件夹
+npm install -g ./appium
+ 4.启动server
+官网上写的
+sudu grunt authorize_ios
+但是grunt不可执行的命令
+ 那就安装grunt-cli和grunt
+ 5.之后执行还是有问题
+
+方法二：
+1.brew install node
+ 2.npm install -g appium
+ 3.sudo authorize_ios
+
+
+1 install brew
+cd /usr/local
+mkdir homebrew
+cd homebrew
+curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/local --strip 1
+cd bin ; sudo brew update
+
+不要sudo
+2 install node.js
+brew install node
+brew -v
+node -v
+npm -v
+
+3 install appium
+npm install -g appium
+npm --registry "http://registry.npmjs.org" install -g appium
+
+由于一些特殊的网络环境，直接通过npm install命令安装第三方库的时候，经常会出现卡死的状态。幸运的是国内CNode社区的@fire9同学利用空余时间搭建了一个镜像的NPM资源库，服务器架设在日本，可以绕过某些不必要的网络问题。你可以通过以下这条命令来安装第三方库： 
+npm --registry "http://npm.hacknodejs.com/" install underscore 
+
+如果你想将它设为默认的资源库，运行下面这条命令即可： 
+
+npm config set registry "http://npm.hacknodejs.com/" 
+
+设置之后每次安装时就可以不用带上—registry参数。值得一提的是还有另一个镜像可用，该镜像地址是http://registry.npmjs.vitecho.com，如需使用，替换上面两行命令的地址即可。
+
+First, DO NOT install nodejs with sudo apt-get or apt-get!!!
+
+Install Nodejs
+ You should download source code from Nodejs official website. And:
+ ./configure
+ make
+ sudo chmod -R 777 /usr/local/
+ make install
+ node
+
+Install Appium
+ npm install -g appium
+ appium
+
+
+4 npm install wd
+5 appium-doctor
+6 appium &
+7 授权: 源代码 sudo grunt authorize
+        npm安装 sudo authorize_ios
+
+8 build:xcodebuild -sdk iphonesimulator
+9 weddriver:git clone git@github.com:appium/Python-client.git
+
+
+二 源代码运行
+?在源代码目录下运行 git pull 确保你使用的是最新的代码。
+
+?根据你想要自动化的平台运行 reset.sh :
+
+./reset.sh # 所有平台 ./reset.sh –ios # ios-only ./reset.sh –android # android-only ./reset.sh –selendroid # selendroid-only
+
+
+?你可能会用到 --dev，如果你想下载和构建测试应用的话。
+
+
+?你也能使用 appium-doctor 来自动验证所有依赖是否符合。如果从源代码运行，你可以使用bin/appium-doctor.js 或者 node bin/appium-doctor.js。
+
+
+
+remove
+1 sudo npm uninstall npm -g
+2 sudo rm -rf /usr/local/lib/node_modules
+  sudo rm -rf /usr/local/bin/node
+  sudo rm -rf /usr/local/lib/dtrace/node.d
+  sudo rm -rf /usr/local/share/man/man1/node.1
+  sudo rm -rf /Users/xinliu/.npm
+  sudo rm -rf /Users/xinliu/node_modules
+  sudo rm -rf /Users/xinliu/npm-debug.log
+  sudo rm -rf /user/local/include/node
+
+brew uninstall node
+brew install node

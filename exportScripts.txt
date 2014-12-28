@@ -1,0 +1,48 @@
+1.by modify traceDirectory
+AppiumCodeMaker.m -> render -> string
+
+AppiumMonitorWindow.xib -> add 'Export scripts Check Box','Export scripts Text Field','Choose Export directory Button'
+bindings inspector:change value and enable
+
+AppiumMonitorWindowController.m -> - (IBAction)chooseiOSTraceDirectory:(id)sender ->create - (IBAction)chooseExportscriptsDirectory:(id)sender {
+};
+
+AppiumPreferencesFile -> add #define APPIUM_PLIST_ExportRecordScripts_DIRECTORY @"ExportRecordScripts Directory"
+			add #define APPIUM_PLIST_USE_ExportRecordScripts_DIRECTORY @"Use ExportRecordScripts Directory"
+
+AppiumModel -> add @property NSString *exportscriptsDirectory;
+@property BOOL useExportscriptsDirectory;
+
+AppiumModel -> 
+
+- (NSString *)exportscriptsDirectory { return [DEFAULTS stringForKey:APPIUM_PLIST_ExportRecordScripts_DIRECTORY]; }
+- (void)setExportscriptsDirectory:(NSString *)exportscriptsDirectory { [DEFAULTS setValue:exportscriptsDirectory forKey:APPIUM_PLIST_ExportRecordScripts_DIRECTORY]; }
+
+- (BOOL)useExportscriptsDirectory { return [DEFAULTS boolForKey:APPIUM_PLIST_USE_ExportRecordScripts_DIRECTORY]; }
+- (void)setUseExportscriptsDirectory:(BOOL)useExportscriptsDirectory{ [DEFAULTS setBool:useExportscriptsDirectory forKey:APPIUM_PLIST_USE_ExportRecordScripts_DIRECTORY]; }
+
+AppiumCodeMaker.h -> add @property BOOL exportScripts;
+AppiumCodeMaker.m
+- (void)exportRecordScripts
+{
+	[self.string writeToFile:self.path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+
+AppiumRecorder.m -> 
+-(IBAction)toggleRecording:(id)sender
+ _codeMaker.exportScripts = YES;
+ _codeMaker.exportScripts = NO
+
+2.AppiumCodeMakerPythonPlugin.m
+preCodeBoilerplateiOS
+NSString *code = [NSString stringWithFormat:@"from appium import webdriver\n\
+from selenium.webdriver.common.action_chains import ActionChains\n\
+import time\n\
+import os\n\
+\n\
+success = True\n\
+desired_caps = {}\n\
+desired_caps['appium-version'] = '1.0'\n\
+desired_caps['platformName'] = 'iOS'\n\
+desired_caps['platformVersion'] = '%@'\n", self.model.iOS.platformVersion];
+

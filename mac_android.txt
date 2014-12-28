@@ -1,0 +1,36 @@
+http://appium.io/slate/cn/v1.2.0/?ruby#系统配置-(android)
+http://appium.io/slate/en/tutorial/android.html
+
+1.install android sdk,运行/tools/android
+
+2.install ant:sudo brew install ant;ant -version
+
+3xinliudeMac:~ xinliu$ cat .bash_profile
+export ANDROID_HOME=/Volumes/IOS3/Android/android-sdk-macosx
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/build_tools
+export JAVA_HOME=="`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`"
+
+source .bash_profile
+
+4.install maven:brew install maven;mvn -v
+
+5.AVD:run sdk manager:/Volumes/IOS2/Android/android-sdk-macosx/tools/android
+http://blog.csdn.net/jiese1990/article/details/38373275
+xinliudeMac:.android xinliu$ cat androidtool.cfg 
+### Settings for Android Tool
+#Sat Dec 20 23:11:21 CST 2014
+http.proxyPort=80
+sdkman.enable.previews=true
+http.proxyHost=mirrors.neusoft.edu.cn
+sdkman.ask.adb.restart=false
+sdkman.show.update.only=true
+sdkman.force.http=true
+sdkman.use.dl.cache=true
+xinliudeMac:.android xinliu$ pwd
+/Users/xinliu/.android
+
+6.android
+android avd
+adb kill-server;adb devices;

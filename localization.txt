@@ -1,0 +1,10 @@
+AppiumLaunchButtonTextTransformer.m -> return ([value boolValue] ? @"Í£Ö¹" : @"Æô¶¯");
+AppiumInspectorRefreshButtonTextTransformer.m -> return ([value boolValue] ? @"" : @"Ë¢ÐÂÆÁÄ»½ØÍ¼");
+
+update:
+AppiumUpdater.m
+
+bug:
+AppiumRecorder.m
+[_windowController.recordButton setTitle:@"Í£Ö¹Â¼ÖÆ½Å±¾"];
+[_windowController.recordButton setTitle:@"Æô¶¯Â¼ÖÆ½Å±¾"];
