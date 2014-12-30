@@ -1,5 +1,11 @@
 1.record script:select hightlight view
+
+AppiumInspectorScreenshotImageView.h
+- (void)determineBorders;
+
 AppiumInspectorScreenshotImageView.m
+- (void)determineBorders
+{
 	self.screenshotScalar = (self.image.size.width > 0) ? self.bounds.size.width / self.image.size.width : .0f;
 	
 	if (self.image.size.height * self.screenshotScalar > self.bounds.size.height){
@@ -9,3 +15,19 @@ AppiumInspectorScreenshotImageView.m
 	self.maxWidth = self.image.size.width * self.screenshotScalar;
 	self.xBorder = (self.bounds.size.width - self.maxWidth) / 2.0f;
 	self.yBorder  = (self.bounds.size.height - self.maxHeight) / 2.0f;
+	
+	if (self.scalarMultiplier != 0.0f)
+	{
+		self.screenshotScalar *= self.scalarMultiplier;
+	}
+}
+
+AppiumInspectorWindowController.m
+- (void)windowDidResize:(NSNotification *)notification
+{
+	if (!self.selectedElementHighlightView.isHidden)
+	{
+		[self.selectedElementHighlightView setHidden:YES];
+	}
+	[self.screenshotImageView determineBorders];
+}
