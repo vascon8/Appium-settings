@@ -1,25 +1,25 @@
-¹Ù·½:
+å®˜æ–¹:
 http://appium.io/slate/cn/v1.2.0/
 
-1. Ö±½ÓÏÂÔØ dmg ÎÄ¼ş¡£µØÖ·ÔÚ https://bitbucket.org/appium/appium.app/downloads/¡£ÓĞ¿ÉÄÜ»á±»Ç½£¬ vpn ×Ô±¸¡£
-»òÕßhttps://github.com/appium/appium/releases
-2. ÓÃ nodejs µÄ npm °²×°¡£Ç¿ÁÒÍÆ¼ö¡£
-3. ´ÓÔ´´úÂëÖ´ĞĞ¡£
+1. ç›´æ¥ä¸‹è½½ dmg æ–‡ä»¶ã€‚åœ°å€åœ¨ https://bitbucket.org/appium/appium.app/downloads/ã€‚æœ‰å¯èƒ½ä¼šè¢«å¢™ï¼Œ vpn è‡ªå¤‡ã€‚
+æˆ–è€…https://github.com/appium/appium/releases
+2. ç”¨ nodejs çš„ npm å®‰è£…ã€‚å¼ºçƒˆæ¨èã€‚
+3. ä»æºä»£ç æ‰§è¡Œã€‚
 
-1.Ô´Âë°²×°appium
-ÏÂÔØÔ´Âë£º
+1.æºç å®‰è£…appium
+ä¸‹è½½æºç ï¼š
 git clone https://github.com/appium/appium
- 2.Ê¹ÓÃbrew°²×°node£¨Ò»¶¨ÒªÓÃbrew£©
-3.°²×° npm install -g Ô´ÂëÎÄ¼ş¼Ğ
+ 2.ä½¿ç”¨brewå®‰è£…nodeï¼ˆä¸€å®šè¦ç”¨brewï¼‰
+3.å®‰è£… npm install -g æºç æ–‡ä»¶å¤¹
 npm install -g ./appium
- 4.Æô¶¯server
-¹ÙÍøÉÏĞ´µÄ
+ 4.å¯åŠ¨server
+å®˜ç½‘ä¸Šå†™çš„
 sudu grunt authorize_ios
-µ«ÊÇgrunt²»¿ÉÖ´ĞĞµÄÃüÁî
- ÄÇ¾Í°²×°grunt-cliºÍgrunt
- 5.Ö®ºóÖ´ĞĞ»¹ÊÇÓĞÎÊÌâ
+ä½†æ˜¯gruntä¸å¯æ‰§è¡Œçš„å‘½ä»¤
+ é‚£å°±å®‰è£…grunt-cliå’Œgrunt
+ 5.ä¹‹åæ‰§è¡Œè¿˜æ˜¯æœ‰é—®é¢˜
 
-·½·¨¶ş£º
+æ–¹æ³•äºŒï¼š
 1.brew install node
  2.npm install -g appium
  3.sudo authorize_ios
@@ -32,7 +32,7 @@ cd homebrew
 curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/local --strip 1
 cd bin ; sudo brew update
 
-²»Òªsudo
+ä¸è¦sudo
 2 install node.js
 brew install node
 brew -v
@@ -42,15 +42,16 @@ npm -v
 3 install appium
 npm install -g appium
 npm --registry "http://registry.npmjs.org" install -g appium
+//registry = "https://registry.npm.taobao.org/"
 
-ÓÉÓÚÒ»Ğ©ÌØÊâµÄÍøÂç»·¾³£¬Ö±½ÓÍ¨¹ınpm installÃüÁî°²×°µÚÈı·½¿âµÄÊ±ºò£¬¾­³£»á³öÏÖ¿¨ËÀµÄ×´Ì¬¡£ĞÒÔËµÄÊÇ¹úÄÚCNodeÉçÇøµÄ@fire9Í¬Ñ§ÀûÓÃ¿ÕÓàÊ±¼ä´î½¨ÁËÒ»¸ö¾µÏñµÄNPM×ÊÔ´¿â£¬·şÎñÆ÷¼ÜÉèÔÚÈÕ±¾£¬¿ÉÒÔÈÆ¹ıÄ³Ğ©²»±ØÒªµÄÍøÂçÎÊÌâ¡£Äã¿ÉÒÔÍ¨¹ıÒÔÏÂÕâÌõÃüÁîÀ´°²×°µÚÈı·½¿â£º 
+ç”±äºä¸€äº›ç‰¹æ®Šçš„ç½‘ç»œç¯å¢ƒï¼Œç›´æ¥é€šè¿‡npm installå‘½ä»¤å®‰è£…ç¬¬ä¸‰æ–¹åº“çš„æ—¶å€™ï¼Œç»å¸¸ä¼šå‡ºç°å¡æ­»çš„çŠ¶æ€ã€‚å¹¸è¿çš„æ˜¯å›½å†…CNodeç¤¾åŒºçš„@fire9åŒå­¦åˆ©ç”¨ç©ºä½™æ—¶é—´æ­å»ºäº†ä¸€ä¸ªé•œåƒçš„NPMèµ„æºåº“ï¼ŒæœåŠ¡å™¨æ¶è®¾åœ¨æ—¥æœ¬ï¼Œå¯ä»¥ç»•è¿‡æŸäº›ä¸å¿…è¦çš„ç½‘ç»œé—®é¢˜ã€‚ä½ å¯ä»¥é€šè¿‡ä»¥ä¸‹è¿™æ¡å‘½ä»¤æ¥å®‰è£…ç¬¬ä¸‰æ–¹åº“ï¼š 
 npm --registry "http://npm.hacknodejs.com/" install underscore 
 
-Èç¹ûÄãÏë½«ËüÉèÎªÄ¬ÈÏµÄ×ÊÔ´¿â£¬ÔËĞĞÏÂÃæÕâÌõÃüÁî¼´¿É£º 
+å¦‚æœä½ æƒ³å°†å®ƒè®¾ä¸ºé»˜è®¤çš„èµ„æºåº“ï¼Œè¿è¡Œä¸‹é¢è¿™æ¡å‘½ä»¤å³å¯ï¼š 
 
 npm config set registry "http://npm.hacknodejs.com/" 
 
-ÉèÖÃÖ®ºóÃ¿´Î°²×°Ê±¾Í¿ÉÒÔ²»ÓÃ´øÉÏ¡ªregistry²ÎÊı¡£ÖµµÃÒ»ÌáµÄÊÇ»¹ÓĞÁíÒ»¸ö¾µÏñ¿ÉÓÃ£¬¸Ã¾µÏñµØÖ·ÊÇhttp://registry.npmjs.vitecho.com£¬ÈçĞèÊ¹ÓÃ£¬Ìæ»»ÉÏÃæÁ½ĞĞÃüÁîµÄµØÖ·¼´¿É¡£
+è®¾ç½®ä¹‹åæ¯æ¬¡å®‰è£…æ—¶å°±å¯ä»¥ä¸ç”¨å¸¦ä¸Šâ€”registryå‚æ•°ã€‚å€¼å¾—ä¸€æçš„æ˜¯è¿˜æœ‰å¦ä¸€ä¸ªé•œåƒå¯ç”¨ï¼Œè¯¥é•œåƒåœ°å€æ˜¯http://registry.npmjs.vitecho.comï¼Œå¦‚éœ€ä½¿ç”¨ï¼Œæ›¿æ¢ä¸Šé¢ä¸¤è¡Œå‘½ä»¤çš„åœ°å€å³å¯ã€‚
 
 First, DO NOT install nodejs with sudo apt-get or apt-get!!!
 
@@ -70,25 +71,25 @@ Install Appium
 4 npm install wd
 5 appium-doctor
 6 appium &
-7 ÊÚÈ¨: Ô´´úÂë sudo grunt authorize
-        npm°²×° sudo authorize_ios
+7 æˆæƒ: æºä»£ç  sudo grunt authorize
+        npmå®‰è£… sudo authorize_ios
 
 8 build:xcodebuild -sdk iphonesimulator
 9 weddriver:git clone git@github.com:appium/Python-client.git
 
 
-¶ş Ô´´úÂëÔËĞĞ
-?ÔÚÔ´´úÂëÄ¿Â¼ÏÂÔËĞĞ git pull È·±£ÄãÊ¹ÓÃµÄÊÇ×îĞÂµÄ´úÂë¡£
+äºŒ æºä»£ç è¿è¡Œ
+?åœ¨æºä»£ç ç›®å½•ä¸‹è¿è¡Œ git pull ç¡®ä¿ä½ ä½¿ç”¨çš„æ˜¯æœ€æ–°çš„ä»£ç ã€‚
 
-?¸ù¾İÄãÏëÒª×Ô¶¯»¯µÄÆ½Ì¨ÔËĞĞ reset.sh :
+?æ ¹æ®ä½ æƒ³è¦è‡ªåŠ¨åŒ–çš„å¹³å°è¿è¡Œ reset.sh :
 
-./reset.sh # ËùÓĞÆ½Ì¨ ./reset.sh ¨Cios # ios-only ./reset.sh ¨Candroid # android-only ./reset.sh ¨Cselendroid # selendroid-only
-
-
-?Äã¿ÉÄÜ»áÓÃµ½ --dev£¬Èç¹ûÄãÏëÏÂÔØºÍ¹¹½¨²âÊÔÓ¦ÓÃµÄ»°¡£
+./reset.sh # æ‰€æœ‰å¹³å° ./reset.sh â€“ios # ios-only ./reset.sh â€“android # android-only ./reset.sh â€“selendroid # selendroid-only
 
 
-?ÄãÒ²ÄÜÊ¹ÓÃ appium-doctor À´×Ô¶¯ÑéÖ¤ËùÓĞÒÀÀµÊÇ·ñ·ûºÏ¡£Èç¹û´ÓÔ´´úÂëÔËĞĞ£¬Äã¿ÉÒÔÊ¹ÓÃbin/appium-doctor.js »òÕß node bin/appium-doctor.js¡£
+?ä½ å¯èƒ½ä¼šç”¨åˆ° --devï¼Œå¦‚æœä½ æƒ³ä¸‹è½½å’Œæ„å»ºæµ‹è¯•åº”ç”¨çš„è¯ã€‚
+
+
+?ä½ ä¹Ÿèƒ½ä½¿ç”¨ appium-doctor æ¥è‡ªåŠ¨éªŒè¯æ‰€æœ‰ä¾èµ–æ˜¯å¦ç¬¦åˆã€‚å¦‚æœä»æºä»£ç è¿è¡Œï¼Œä½ å¯ä»¥ä½¿ç”¨bin/appium-doctor.js æˆ–è€… node bin/appium-doctor.jsã€‚
 
 
 
