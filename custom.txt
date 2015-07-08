@@ -31,3 +31,101 @@ AppiumInspectorWindowController.m
 	}
 	[self.screenshotImageView determineBorders];
 }
+
+2.version mgr
+AppiumUpdater.m
+
+-(void) checkForUpdates:(id)sender
+{
+	BOOL alertOnNoUpdates = sender != nil;
+	BOOL updatesAvailable = NO;
+//    updatesAvailable |= [self checkForAppUpdate];
+    updatesAvailable |= [self checkForPackageUpdate];
+	if (alertOnNoUpdates && !updatesAvailable)
+	{
+		NSAlert *alert = [NSAlert new];
+		[alert setMessageText:@"没有可用的更新"];
+		[alert setInformativeText:@"已经是最新版本"];
+		[alert performSelectorOnMainThread:@selector(runModal) withObject:nil waitUntilDone:YES];
+	}
+}
+
+
+-(void)doPackageUpgradeAlert:(NSArray*)versions
+		[self performSelectorOnMainThread:@selector(updateAppiumPackage:) withObject:versions waitUntilDone:YES];
+
+NodeInstance.m
+-(void) installPackage:(NSString*)packageName atVersion:(NSString*)version forceInstall:(BOOL)forceInstall
+{
+	NSString *nodeModulesDirectory = [NSString stringWithFormat:@"%@/%@", _nodeRootPath,@"node_modules"];
+    NSString *packagePath = [NSString stringWithFormat:@"%@/%@", nodeModulesDirectory, packageName];
+	
+    if (forceInstall || ![[NSFileManager defaultManager] fileExistsAtPath:packagePath])
+    {
+		// create node modules folder if it does not exist (so npm will install locally)
+		BOOL isDirectory;
+		if(![[NSFileManager defaultManager] fileExistsAtPath:nodeModulesDirectory isDirectory:&isDirectory])
+		{
+			NSError *error;
+			if(![[NSFileManager defaultManager] createDirectoryAtPath:nodeModulesDirectory withIntermediateDirectories:YES attributes:nil error:&error])
+			{
+				NSLog(@"Error: Create folder failed %@ %@", nodeModulesDirectory,error);
+				return;
+			}
+		}
+		
+		// install package
+		NSString *npmPath = [NSString stringWithFormat:@"%@/%@", _nodeRootPath, @"node/bin/npm"];
+		NSString *packageArg = [NSString stringWithFormat:@"%@%@", packageName, version ? [NSString stringWithFormat:@"%@%@", @"@", version] : @""];
+		NSLog(@"install package:%@ %@ %@",npmPath,packageArg,version);
+		[Utility runTaskWithBinary:npmPath arguments:[NSArray arrayWithObjects: @"install", packageArg, nil] path:_nodeRootPath];
+    }
+}
+
+3.git mgr
+fork:
+https://help.github.com/articles/fork-a-repo/
+sync:
+https://help.github.com/articles/syncing-a-fork/
+
+4.screenshot
+getScreenshot
+1)   mobilecommand.py
+ #Custom
+ GET_SCREENSHOT = ‘getScreenshot'
+
+2)webdriver.py -> Appium ▸ Contents ▸ Resources ▸ node_modules ▸ appium ▸ lib ▸ server routings.js
+
+def screenshot(self):
+return self.execute(Command.GET_SCREENSHOT)['value’]
+
+def _addCommands(self):
+...
+#custom screenshot
+self.command_executor._commands[Command.GET_SCREENSHOT] = \
+ ('GET', '/session/$sessionId/screenshot')
+
+5.run record scripts
+lib/devices/ios/ios.js
+exports.iosWaitForAppLaunched = waitForAppLaunched;
+routings.js
+rest.post('/wd/hub/session/:sessionId?/appium/device/iosWaitForAppLaunched', controller.iosWaitForAppLaunched);
+controller.js
+exports.iosWaitForAppLaunched = function (req, res) {
+  req.device.iosWaitForAppLaunched(getResponseHandler(req, res));
+};
+
+SEJsonWireClient.m
+// POST /wd/hub/session/:sessionId/appium/device/iosWaitForAppLaunched
+-(void) postIosWaitForAppWithSession:(NSString*)sessionId error:(NSError**)error
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/session/%@/appium/device/iosWaitForAppLaunched", self.httpCommandExecutor, sessionId];
+    [SEUtility performPostRequestToUrl:urlString postParams:nil error:error];
+}
+
+SERemoteWebDriver.m
+- (void)iosWaitForAppLaunch{
+    NSError *error;
+    [self.jsonWireClient postIosWaitForAppWithSession:self.session.sessionId error:&error];
+    [self addError:error];
+}

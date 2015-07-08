@@ -1,0 +1,35 @@
+iOS.js
+tmpDir: path.resolve(this.args.tmpDir , 'testwa-instruments')
+
+instruments.js
+this.tmpDir = opts.tmpDir || '/tmp/testwa-instruments'
+
+dynamic-bootstrap.js
+    dynamicBootstrapDir = path.resolve(process.env.HOME,
+      'Library/Application Support/testwa/bootstrap');
+dynamicBootstrapDir = path.resolve(opts.tmpDir || '/tmp', 'testwa/bootstrap');
+
+devices.js
+ this.args.traceDir = path.resolve(this.args.tmpDir , 'testwa-instruments');
+
+ios-controller.js
+  var shotFolder = path.resolve(this.args.tmpDir,
+                                "testwa-instruments/Run 1/");
+
+commands.js
+      imageName = new Date().toLocaleString();
+      $.capture(imageName);
+      return {
+        status: STATUS.Success.code,
+        value: '',
+        screenshot: imageName
+      };
+
+       if (err.isAppium) {
+      imageName = new Date().toLocaleString();
+      $.capture(imageName);
+      return {
+        status: err.code,
+        value: err.message,
+        screenshot: imageName
+      };

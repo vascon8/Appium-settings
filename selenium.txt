@@ -1,0 +1,19 @@
+SEJsonWireClient.m
+-(id) initWithServerAddress:(NSString*)address port:(NSInteger)port error:(NSError**)error
+{
+    self = [super init];
+    if (self) {
+        [self setServerAddress:address];
+        [self setServerPort:port];
+        [self setErrors:[NSMutableArray new]];
+		
+        // get status
+        [self getStatusAndReturnError:error];
+//        if ([*error code] != 0)
+//            return nil;
+    }
+    return self;
+}
+
+SEUtility.m
+    sleep(1);

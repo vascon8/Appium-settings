@@ -1,0 +1,9 @@
+helper.js:
+couldn’t start Appium REST
+Appium->TestWA
+
+appium.js:
+appium->TestWA 
+
+controller.js
+appium->TestWA

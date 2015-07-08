@@ -8,3 +8,4 @@ bug:
 AppiumRecorder.m
 [_windowController.recordButton setTitle:@"停止录制脚本"];
 [_windowController.recordButton setTitle:@"启动录制脚本"];
+pulseAnimation1.fromValue = [CIColor colorWithRed:0.7 green:0.0 blue:0.0 alpha:0.9];
